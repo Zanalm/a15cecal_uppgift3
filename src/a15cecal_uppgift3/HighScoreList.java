@@ -1,40 +1,42 @@
 package a15cecal_uppgift3;
+
 import java.io.*;
+import java.util.Scanner;
 
 public class HighScoreList {
 	public static void main(String[] args) {
-		
-		// The name of the file to open.
-        String fileName = "highscorelist.txt";
-
-        try {
-            // Assume default encoding.
-            FileWriter fileWriter =
-                new FileWriter(fileName);
-
-            // Always wrap FileWriter in BufferedWriter.
-            BufferedWriter bufferedWriter =
-                new BufferedWriter(fileWriter);
-
-            // Note that write() does not automatically
-            // append a newline character.
-            bufferedWriter.write("Hi");
-            bufferedWriter.write(" I'm dog.");
-            bufferedWriter.newLine();
-            bufferedWriter.write("I'll be your dog");
-            bufferedWriter.write(" for the evening.");
-
-            // Always close files.
-            bufferedWriter.close();
-        }
-        catch(IOException ex) {
-            System.out.println(
-                "Error writing to file '"
-                + fileName + "'");
-            // Or we could just do this:
-            // ex.printStackTrace();
-        }
 
 	}
 
+	public HighScoreItem getItemInfo() {
+		// takes input from user and displays it in the console
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("What is your name? ");
+		String name = scanner.next();
+		System.out.println("Name: " + name);
+
+		System.out.print("What is the score? ");
+		int score = scanner.nextInt();
+		System.out.println("Score: " + score);
+
+		HighScoreItem NewItem = new HighScoreItem(name, score);
+		return NewItem;
+	}
+
+	public void writeFile(HighScoreItem itemToWrite) {
+		// The name of the file to save as
+		String fileName = "highscorelist.txt";
+		try {
+			FileWriter fileWriter = new FileWriter(fileName);
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+			bufferedWriter.write(itemToWrite.getName() + "\t" + itemToWrite.getScore());
+
+			bufferedWriter.close();
+		} catch (IOException ex) {
+			System.out.println("Error writing to file '" + fileName + "'");
+		}
+
+	}
 }
