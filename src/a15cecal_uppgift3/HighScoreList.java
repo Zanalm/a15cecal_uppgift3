@@ -14,14 +14,15 @@ public class HighScoreList {
 
 	private void addTextToFile() {
 		try {
+			// re-make this so that every new entry gets a new line!
 			FileWriter writer = new FileWriter("highscorelist.txt");
 			for (int i = 0; i < list.size(); i++) {
-				writer.write((i + 1) + ". " + list.get(i).getName() + " " + list.get(i).getScore() + " \n");
+				writer.write((i + 1) + ". " + "\t" + list.get(i).getName() + "\t" + list.get(i).getScore() + " \n");
 			}
 
 			writer.close();
 		} catch (IOException e) {
-			System.out.println("Could not write high score to the list" + e.getMessage());
+			System.out.println("Error, could not write stats to the list!" + e.getMessage());
 		}
 	}
 
@@ -53,7 +54,7 @@ public class HighScoreList {
 		eraseObjects();
 		addTextToFile();
 
-		System.out.println(inputName + " with score " + inputScore + " was added to the list. ");
+		System.out.println(inputName + " with score " + inputScore + " was added to the high score list. ");
 	}
 
 	private void getHighscoresFromFile() {
