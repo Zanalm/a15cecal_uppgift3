@@ -1,7 +1,6 @@
 package a15cecal_uppgift3;
 
 import java.io.BufferedReader;
-//import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,12 +13,13 @@ public class HighScoreList {
 
 	private void addTextToFile() {
 		try {
-			// when there's data in the file the program won't start... doesn't happen at home
+			// when there's data in the file the program won't start...
+			// the list items shows up in different places when more than 2 characters are used in score/name
 			FileWriter writer = new FileWriter("highscorelist.txt");
 			writer.write("----The saved high score list----" + "\r\n" + "\r\n");
-			writer.write(String.format("   %-7s %-3s%n", "Name", "     Score"));
+			//writer.write(String.format("   %-7s %-3s%n", "Name", "     Score"));
 			for (int i = 0; i < list.size(); i++) {
-				writer.write("\n" + (i + 1) + ". " + list.get(i).getName() + "\t\t" + list.get(i).getScore() + "\r\n");
+				writer.write("\n" + (i + 1) + ". " + list.get(i).getName() + "\t" + "\t" + list.get(i).getScore() + "\r\n");
 			}
 
 			writer.close();
@@ -28,12 +28,12 @@ public class HighScoreList {
 		}
 	}
 
-	private void sortHighscores() {
+	private void sortHighScores() {
 		Collections.sort(list, HighScoreItem.ScoreComparison);
 
 	}
 
-	// Removes objects on place [5] in list
+	// Removes objects on place 5 in the list
 	private void eraseObjects() {
 		if (list.size() > 5) {
 			list.remove(5);
@@ -41,28 +41,28 @@ public class HighScoreList {
 	}
 
 	// This is called for when a user chooses option 1
-	public void addHighscores() {
+	public void addHighScores() {
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		String inputName;
 		int inputScore;
-		System.out.print("Enter players name: ");
+		System.out.print("Enter players name:");
 		inputName = scan.nextLine();
-		System.out.print("Enter players score: ");
+		System.out.print("Enter players score:");
 		inputScore = scan.nextInt();
 
 		list.add(new HighScoreItem(inputName, inputScore));
-		sortHighscores();
+		sortHighScores();
 		eraseObjects();
 		addTextToFile();
 
 		System.out.println(inputName + " with score " + inputScore + " was added to the high score list. ");
 	}
 
-	private void getHighscoresFromFile() {
+	private void getHighScoresFromFile() {
 		BufferedReader reader;
 		try {
-			reader = new BufferedReader(new FileReader("Highscorelist.txt"));
+			reader = new BufferedReader(new FileReader("highscorelist.txt"));
 			String lines;
 			String[] inputFromFile;
 			String name;
@@ -83,10 +83,10 @@ public class HighScoreList {
 	}
 
 	// called for when user chooses option 2
-	public void showHighscores() {
+	public void showHighScores() {
 		System.out.println("\n---The highscore list---");
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println((i + 1) + ". " + list.get(i).getName() + " " + list.get(i).getScore());
+			System.out.println("\n" + (i + 1) + ". " + list.get(i).getName() + "\t\t" + list.get(i).getScore() + "\r\n");
 		}
 
 	}
@@ -97,7 +97,7 @@ public class HighScoreList {
 			FileWriter writer = new FileWriter("highscorelist.txt");
 			for (int i = 0; i < 5; i++) {
 				list.add(new HighScoreItem("unknown", 0));
-				writer.write((i + 1) + ". " + list.get(i).getName() + " " + list.get(i).getScore() + "\n");
+				writer.write("\n" + (i + 1) + ". " + list.get(i).getName() + "\t\t" + list.get(i).getScore() + "\r\n");
 			}
 
 			writer.close();
@@ -107,7 +107,7 @@ public class HighScoreList {
 	}
 
 	// This is being used when a user chooses option 3
-	public void resetHighscores() {
+	public void resetHighScores() {
 
 		list.clear();
 		fillInUnknownPlayer();
@@ -119,6 +119,6 @@ public class HighScoreList {
 
 	HighScoreList()
 	{
- 		getHighscoresFromFile();
+ 		getHighScoresFromFile();
 	}
 }

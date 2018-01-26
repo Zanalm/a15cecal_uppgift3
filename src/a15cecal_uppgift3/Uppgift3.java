@@ -28,15 +28,15 @@ public class Uppgift3 {
 			// if user selects 1 it'll be prompted to add a name and a score, see file HighScoreList for more
 			switch (menuOptions) {
 			case 1:
-				game.addHighscores();
+				game.addHighScores();
 				break;
 				// 2 will print the whole list
 			case 2:
-				game.showHighscores();
+				game.showHighScores();
 				break;
 				// 3 will reset the list
 			case 3:
-				game.resetHighscores();
+				game.resetHighScores();
 				break;
 				// 4 will end the program
 			case 4:

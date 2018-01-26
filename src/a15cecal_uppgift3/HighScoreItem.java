@@ -34,6 +34,6 @@ public class HighScoreItem {
 
 	@Override
 	public String toString() {
-		return (playersName + " " + playersScore);
+		return (playersName  + playersScore);
 	}
 }

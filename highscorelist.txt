@@ -1,7 +1,6 @@
 ----The saved high score list----
 
-   Name         Score
 
-1. gg		44
+1. ffffffff		4444444
 
-2. dd		33
+2. ff		333
