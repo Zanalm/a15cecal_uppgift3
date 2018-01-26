@@ -14,10 +14,12 @@ public class HighScoreList {
 
 	private void addTextToFile() {
 		try {
-			// re-make this so that every new entry gets a new line!
+			// when there's data in the file the program won't start... doesn't happen at home
 			FileWriter writer = new FileWriter("highscorelist.txt");
+			writer.write("----The saved high score list----" + "\r\n" + "\r\n");
+			writer.write(String.format("   %-7s %-3s%n", "Name", "     Score"));
 			for (int i = 0; i < list.size(); i++) {
-				writer.write((i + 1) + ". " + "\t" + list.get(i).getName() + "\t" + list.get(i).getScore() + " \n");
+				writer.write("\n" + (i + 1) + ". " + list.get(i).getName() + "\t\t" + list.get(i).getScore() + "\r\n");
 			}
 
 			writer.close();

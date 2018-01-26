@@ -1,2 +1,7 @@
-1. 	yy	44 
-2. 	rr	10 
+----The saved high score list----
+
+   Name         Score
+
+1. gg		44
+
+2. dd		33

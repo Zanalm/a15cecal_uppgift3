@@ -1,18 +1,18 @@
 package a15cecal_uppgift3;
-import java.util.Comparator;
 
+import java.util.Comparator;
 
 public class HighScoreItem {
 	private String playersName;
 	private int playersScore;
 
-	public HighScoreItem(String name, int score)
-	{
+	public HighScoreItem(String name, int score) {
 		playersName = name;
 		playersScore = score;
-		
+
 	}
 
+	// Getters
 	public String getName() {
 		return playersName;
 	}
