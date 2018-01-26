@@ -1,8 +1,14 @@
 package a15cecal_uppgift3;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class HighScoreItem {
+public class HighScoreItem implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 	private String playersName;
 	private int playersScore;
 
