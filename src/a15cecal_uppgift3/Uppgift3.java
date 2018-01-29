@@ -19,10 +19,8 @@ public class Uppgift3 {
 		try {
 			new FileOutputStream("highscorelist.txt", true).close();
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -34,8 +32,7 @@ public class Uppgift3 {
 			System.out.println("4. Quit");
 			System.out.print("Please make your decision and press enter: ");
 
-			// creates string in case users type in letters instead of a number
-			// (integer)
+			// Creates string in case users type in letters instead of an number
 			String input = scanInput.next();
 			try {
 				menuOptions = Integer.parseInt(input);
@@ -71,7 +68,7 @@ public class Uppgift3 {
 		}
 
 		scanInput.close();
-		System.out.println("Thank you for viewing the stats, see ya later!");
+		System.out.println("Thank you for viewing/modifying the stats, see ya later!");
 	}
 
 	public static void writeFile() {
@@ -96,7 +93,6 @@ public class Uppgift3 {
 			game = (HighScoreList) ois.readObject();
 			ois.close();
 		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

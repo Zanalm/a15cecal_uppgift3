@@ -60,8 +60,7 @@ public class HighScoreList implements Serializable {
 	public void showHighScores() {
 		System.out.println("---The highscore list---");
 		for (int i = 0; i < list.size(); i++) {
-			System.out
-					.println((i + 1) + ". " + list.get(i).getName() + "\t" + list.get(i).getScore());
+			System.out.println((i + 1) + ". " + list.get(i).getName() + "\t" + list.get(i).getScore());
 		}
 
 	}
